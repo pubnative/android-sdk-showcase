@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import net.pubnative.sdkshowcase.R
 
 import kotlinx.android.synthetic.main.fragment_main.*
-import net.pubnative.sdkshowcase.ui.activities.DemandConfigActivity
+import net.pubnative.sdkshowcase.ui.activities.*
 
 /**
  * A placeholder fragment containing a simple view.
@@ -32,19 +32,19 @@ class MainFragment : Fragment() {
         })
 
         banner_button.setOnClickListener({ view ->
-
+            BannerActivity.start(context)
         })
 
         feed_small_button.setOnClickListener({ view ->
-
+            FeedSmallActivity.start(context)
         })
 
         feed_medium_button.setOnClickListener({ view ->
-
+            FeedMediumActivity.start(context)
         })
 
         interstitial_button.setOnClickListener({ view ->
-
+            InterstitialActivity.start(context)
         })
     }
 }
