@@ -7,5 +7,15 @@
     android:layout_height="match_parent"
     tools:context="net.pubnative.sdkshowcase.ui.fragments.BannerFragment"
     tools:showIn="@layout/activity_banner">
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:background="@android:color/background_light"/>
+    <FrameLayout
+        android:id="@+id/banner_container"
+        android:layout_width="320dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

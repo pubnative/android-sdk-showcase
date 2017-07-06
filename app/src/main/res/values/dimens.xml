@@ -1,4 +1,8 @@
 <resources>
+    <dimen name="activity_top_margin">12dp</dimen>
     <dimen name="side_margin">16dp</dimen>
     <dimen name="button_list_vertical_margin">8dp</dimen>
+
+    <dimen name="radio_text_size">16sp</dimen>
+    <dimen name="radio_group_item_vertical_margin">8dp</dimen>
 </resources>

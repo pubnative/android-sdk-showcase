@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,5 +12,45 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <RadioGroup
+            android:id="@+id/pubnative_config_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/side_margin"
+            android:layout_marginRight="@dimen/side_margin"
+            android:layout_marginTop="@dimen/activity_top_margin">
+
+            <RadioButton
+                android:id="@+id/pubnative_native_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/config_native"
+                android:textSize="@dimen/radio_text_size" />
+
+            <RadioButton
+                android:id="@+id/pubnative_standard_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/radio_group_item_vertical_margin"
+                android:text="@string/config_standard"
+                android:textSize="@dimen/radio_text_size" />
+
+            <RadioButton
+                android:id="@+id/pubnative_video_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/radio_group_item_vertical_margin"
+                android:text="@string/config_video"
+                android:textSize="@dimen/radio_text_size" />
+
+            <RadioButton
+                android:id="@+id/pubnative_adtag_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/radio_group_item_vertical_margin"
+                android:text="@string/config_ad_tag"
+                android:textSize="@dimen/radio_text_size" />
+        </RadioGroup>
     </LinearLayout>
 </ScrollView>

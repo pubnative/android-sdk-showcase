@@ -15,8 +15,8 @@
             android:id="@+id/demang_config_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:background="@android:color/black">
+            android:background="@android:color/black"
+            android:clickable="true">
 
             <ImageView
                 android:id="@+id/pubnative_logo"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/side_margin"
             android:layout_marginRight="@dimen/side_margin"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/activity_top_margin"
             android:text="@string/banner" />
 
         <Button
