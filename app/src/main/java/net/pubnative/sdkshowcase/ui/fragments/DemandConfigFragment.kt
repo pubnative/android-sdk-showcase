@@ -23,6 +23,10 @@ class DemandConfigFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateWithSettings()
+
+        pubnative_config_radio_group.setOnCheckedChangeListener { radioGroup, i ->
+            handleSelectionChange(i)
+        }
     }
 
     fun updateWithSettings() {
@@ -47,6 +51,8 @@ class DemandConfigFragment : Fragment() {
                     chooseItem(R.id.pubnative_native_radio)
                 }
             }
+        } else {
+            chooseItem(R.id.pubnative_native_radio)
         }
     }
 
@@ -54,5 +60,25 @@ class DemandConfigFragment : Fragment() {
         pubnative_config_radio_group.post {
             pubnative_config_radio_group.check(id)
         }
+    }
+
+    fun handleSelectionChange(id: Int) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        var selection = SettingsConstants.DEMAND_TYPE_NATIVE
+        when (id) {
+            R.id.pubnative_native_radio -> {
+                selection = SettingsConstants.DEMAND_TYPE_NATIVE
+            }
+            R.id.pubnative_standard_radio -> {
+                selection = SettingsConstants.DEMAND_TYPE_STANDARD
+            }
+            R.id.pubnative_video_radio -> {
+                selection = SettingsConstants.DEMAND_TYPE_VIDEO
+            }
+            R.id.pubnative_adtag_radio -> {
+                selection = SettingsConstants.DEMAND_TYPE_AD_TAG
+            }
+        }
+        preferences.edit().putInt(SettingsConstants.SETTING_DEMMAND_TYPE, selection).apply()
     }
 }

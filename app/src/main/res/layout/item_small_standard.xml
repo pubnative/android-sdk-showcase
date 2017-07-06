@@ -4,4 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_marginBottom="4dp"
-    android:layout_marginTop="12dp" />
+    android:layout_marginTop="12dp"
+    android:layout_marginLeft="@dimen/side_margin"
+    android:layout_marginRight="@dimen/side_margin"
+    android:layout_gravity="center"/>

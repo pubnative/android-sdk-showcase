@@ -10,6 +10,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        Pubnative.setTestMode(true)
         Pubnative.init(applicationContext, APP_TOKEN)
     }
 }

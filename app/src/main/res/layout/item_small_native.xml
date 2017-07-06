@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/native_ad_container"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="80dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="@dimen/side_margin"
+    android:layout_marginRight="@dimen/side_margin"
+    android:layout_marginTop="12dp">
+
+    <ImageView
+        android:id="@+id/native_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:id="@+id/native_call_to_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_toLeftOf="@id/native_call_to_action"
+        android:layout_toRightOf="@id/native_icon"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/native_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/native_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/native_disclaimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

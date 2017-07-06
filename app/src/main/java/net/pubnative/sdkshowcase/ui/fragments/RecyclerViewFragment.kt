@@ -67,6 +67,6 @@ open class RecyclerViewFragment : Fragment() {
     /**
      * Inject ads into list in child classes
      */
-    open fun injectAds(quotes : List<ViewType>) {}
+    open fun injectAds(quotes : ArrayList<ViewType>) {}
 
 }

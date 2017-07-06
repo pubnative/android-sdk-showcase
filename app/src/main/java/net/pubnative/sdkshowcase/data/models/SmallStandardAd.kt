@@ -6,6 +6,6 @@ import net.pubnative.sdkshowcase.ui.views.ViewType
 /**
  * Created by erosgarciaponte on 06.07.17.
  */
-class SmallStandardAd : ViewType {
+class SmallStandardAd(val placementId: String) : ViewType {
     override fun getViewType(): Int = AdapterConstants.AD_SMALL_STANDARD
 }

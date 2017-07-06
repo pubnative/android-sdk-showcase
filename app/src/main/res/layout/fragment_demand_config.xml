@@ -24,7 +24,6 @@
                 android:id="@+id/pubnative_native_radio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="@string/config_native"
                 android:textSize="@dimen/radio_text_size" />
 
