@@ -33,7 +33,7 @@ class AdmobNativeMediumDelegateAdapter : ViewTypeDelegateAdapter {
             this.removeAllViews()
 
             val adView = NativeExpressAdView(context)
-            adView.adSize = AdSize(280, 132)
+            adView.adSize = AdSize(300, 138)
             adView.adUnitId = item.adUnitId
             this.addView(adView)
 
