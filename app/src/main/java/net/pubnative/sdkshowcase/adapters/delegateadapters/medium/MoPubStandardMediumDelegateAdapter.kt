@@ -43,7 +43,7 @@ class MoPubStandardMediumDelegateAdapter : ViewTypeDelegateAdapter {
                 }
 
                 override fun onBannerFailed(banner: MoPubView?, errorCode: MoPubErrorCode?) {
-                    Toast.makeText(itemView.context, "onBannerFailed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(itemView.context, "onBannerFailed: ${errorCode.toString()}", Toast.LENGTH_LONG).show()
                 }
 
                 override fun onBannerLoaded(banner: MoPubView?) {

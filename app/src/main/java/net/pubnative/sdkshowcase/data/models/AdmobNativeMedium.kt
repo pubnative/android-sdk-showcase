@@ -6,6 +6,6 @@ import net.pubnative.sdkshowcase.ui.views.ViewType
 /**
  * Created by erosgarciaponte on 07.07.17.
  */
-class AdmobStandardBanner(val adUnitId: String) : ViewType {
-    override fun getViewType(): Int = AdapterConstants.ADMOB_BANNER_STANDARD
+class AdmobNativeMedium(val adUnitId: String) : ViewType {
+    override fun getViewType(): Int = AdapterConstants.ADMOB_MEDIUM_NATIVE
 }

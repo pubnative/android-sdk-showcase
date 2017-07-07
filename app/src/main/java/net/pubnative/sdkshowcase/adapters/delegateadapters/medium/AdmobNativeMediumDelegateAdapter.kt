@@ -1,4 +1,4 @@
-package net.pubnative.sdkshowcase.adapters.delegateadapters.small
+package net.pubnative.sdkshowcase.adapters.delegateadapters.medium
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
@@ -6,41 +6,41 @@ import android.widget.Toast
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.NativeExpressAdView
 import net.pubnative.sdkshowcase.R
 import net.pubnative.sdkshowcase.adapters.delegateadapters.ViewTypeDelegateAdapter
-import net.pubnative.sdkshowcase.data.models.AdmobStandardBanner
-import net.pubnative.sdkshowcase.ui.views.DestroyableView
+import net.pubnative.sdkshowcase.data.models.AdmobNativeBanner
+import net.pubnative.sdkshowcase.data.models.AdmobNativeMedium
 import net.pubnative.sdkshowcase.ui.views.ViewType
 import net.pubnative.sdkshowcase.util.inflate
 
 /**
  * Created by erosgarciaponte on 07.07.17.
  */
-class AdmobStandardBannerDelegateAdapter : ViewTypeDelegateAdapter {
-    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = AdmobStandardBannerViewHolder(parent)
+class AdmobNativeMediumDelegateAdapter : ViewTypeDelegateAdapter {
+    override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = AdmobNativeMediumViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
-        item as AdmobStandardBanner
-        (holder as AdmobStandardBannerViewHolder).bind(item)
+        item as AdmobNativeMedium
+        (holder as AdmobNativeMediumViewHolder).bind(item)
     }
 
-    inner class AdmobStandardBannerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+    inner class AdmobNativeMediumViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
             parent.inflate(R.layout.item_admob)) {
 
-        fun bind(item: AdmobStandardBanner) = with(itemView) {
+        fun bind(item: AdmobNativeMedium) = with(itemView) {
             this as ViewGroup
             this.removeAllViews()
 
-            val adView = AdView(context)
-            adView.adSize = AdSize.BANNER
+            val adView = NativeExpressAdView(context)
+            adView.adSize = AdSize(280, 132)
             adView.adUnitId = item.adUnitId
             this.addView(adView)
 
             loadAd(adView)
         }
 
-        fun loadAd(adView: AdView) {
+        fun loadAd(adView: NativeExpressAdView) {
             adView.adListener = object : AdListener() {
                 override fun onAdClicked() {
                     Toast.makeText(itemView.context, "onAdClicked", Toast.LENGTH_LONG).show()

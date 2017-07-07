@@ -17,7 +17,8 @@ object AdapterConstants {
     val MOPUB_MEDIUM_NATIVE = 9
 
     val ADMOB_BANNER_STANDARD = 10
-    val ADMOB_MEDIUM_STANDARD = 11
+    val ADMOB_BANNER_NATIVE = 11
+    val ADMOB_MEDIUM_NATIVE = 12
 
 
 }

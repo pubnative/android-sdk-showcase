@@ -7,10 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import net.pubnative.sdkshowcase.*
-import net.pubnative.sdkshowcase.data.models.MoPubNativeBanner
-import net.pubnative.sdkshowcase.data.models.MoPubStandardBanner
-import net.pubnative.sdkshowcase.data.models.SmallNativeAd
-import net.pubnative.sdkshowcase.data.models.SmallStandardAd
+import net.pubnative.sdkshowcase.data.models.*
 import net.pubnative.sdkshowcase.settings.SettingsConstants
 import net.pubnative.sdkshowcase.ui.views.ViewType
 
@@ -67,10 +64,12 @@ class FeedSmallFragment : RecyclerViewFragment() {
     fun addNativeAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, SmallNativeAd(SMALL_PLACEMENT_ID))
         //list.add(INJECT_MOPUB_AD_POSITION, MoPubNativeBanner(MOPUB_NATIVE_AD_UNIT_ID))
+        list.add(INJECT_ADMOB_AD_POSITION, AdmobNativeBanner(ADMOB_NATIVE_BANNER_AD_UNIT_ID))
     }
 
     fun addStandardAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, SmallStandardAd(SMALL_PLACEMENT_ID))
         list.add(INJECT_MOPUB_AD_POSITION, MoPubStandardBanner(MOPUB_BANNER_AD_UNIT_ID))
+        list.add(INJECT_ADMOB_AD_POSITION, AdmobStandardBanner(ADMOB_BANNER_AD_UNIT_ID))
     }
 }
