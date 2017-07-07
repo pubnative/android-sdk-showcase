@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="320dp"
     android:layout_height="250dp"
     android:layout_marginBottom="4dp"
     android:layout_marginLeft="@dimen/side_margin"
@@ -36,12 +36,13 @@
         android:layout_below="@id/native_title"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="2dp"
+        android:isIndicator="true"
         android:layout_toRightOf="@id/native_icon" />
 
     <FrameLayout
         android:id="@+id/native_banner"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="140dp"
         android:layout_below="@id/native_icon"
         android:layout_marginTop="8dp" />
 
@@ -53,7 +54,8 @@
         android:layout_below="@id/native_banner"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="6dp" />
+        android:layout_marginTop="6dp"
+        android:clickable="false"/>
 
     <TextView
         android:id="@+id/native_description"
