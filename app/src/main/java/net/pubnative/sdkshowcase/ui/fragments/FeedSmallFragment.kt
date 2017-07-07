@@ -6,9 +6,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import net.pubnative.sdkshowcase.INJECT_AD_POSITION
-import net.pubnative.sdkshowcase.R
-import net.pubnative.sdkshowcase.SMALL_PLACEMENT_ID
+import net.pubnative.sdkshowcase.*
+import net.pubnative.sdkshowcase.data.models.MoPubNativeBanner
+import net.pubnative.sdkshowcase.data.models.MoPubStandardBanner
 import net.pubnative.sdkshowcase.data.models.SmallNativeAd
 import net.pubnative.sdkshowcase.data.models.SmallStandardAd
 import net.pubnative.sdkshowcase.settings.SettingsConstants
@@ -21,7 +21,7 @@ class FeedSmallFragment : RecyclerViewFragment() {
 
     override fun injectAds(quotes: ArrayList<ViewType>) {
         super.injectAds(quotes)
-        quotes.add(INJECT_AD_POSITION, getDemandTypeAd())
+        addDemandTypeAds(quotes)
     }
 
     fun getDemandTypeAd(): ViewType {
@@ -37,5 +37,40 @@ class FeedSmallFragment : RecyclerViewFragment() {
         } else {
             return SmallNativeAd(SMALL_PLACEMENT_ID)
         }
+    }
+
+    fun addDemandTypeAds(quotes: ArrayList<ViewType>) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
+            when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
+                SettingsConstants.DEMAND_TYPE_NATIVE -> {
+                    addNativeAds(quotes)
+                }
+                SettingsConstants.DEMAND_TYPE_STANDARD -> {
+                    addStandardAds(quotes)
+                }
+                SettingsConstants.DEMAND_TYPE_VIDEO -> {
+                    addNativeAds(quotes)
+                }
+                SettingsConstants.DEMAND_TYPE_AD_TAG -> {
+                    addNativeAds(quotes)
+                }
+                else -> {
+                    addNativeAds(quotes)
+                }
+            }
+        } else {
+            addNativeAds(quotes)
+        }
+    }
+
+    fun addNativeAds(list: ArrayList<ViewType>) {
+        list.add(INJECT_PUBNATIVE_AD_POSITION, SmallNativeAd(SMALL_PLACEMENT_ID))
+        //list.add(INJECT_MOPUB_AD_POSITION, MoPubNativeBanner(MOPUB_NATIVE_AD_UNIT_ID))
+    }
+
+    fun addStandardAds(list: ArrayList<ViewType>) {
+        list.add(INJECT_PUBNATIVE_AD_POSITION, SmallStandardAd(SMALL_PLACEMENT_ID))
+        list.add(INJECT_MOPUB_AD_POSITION, MoPubStandardBanner(MOPUB_BANNER_AD_UNIT_ID))
     }
 }

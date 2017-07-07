@@ -40,6 +40,10 @@ class BannerFragment : Fragment() {
         return rootView
     }
 
+    /*
+        The whole code is very ugly. Only for testing. Will be changed by a proper MVP preferably
+     */
+
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)

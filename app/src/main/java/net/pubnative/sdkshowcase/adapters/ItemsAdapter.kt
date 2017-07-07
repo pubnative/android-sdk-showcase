@@ -7,6 +7,8 @@ import net.pubnative.sdkshowcase.adapters.delegateadapters.QuoteDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.ViewTypeDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MediumNativeDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MediumStandardDelegateAdapter
+import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MoPubStandardMediumDelegateAdapter
+import net.pubnative.sdkshowcase.adapters.delegateadapters.small.MoPubStandardBannerDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.small.SmallNativeDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.small.SmallStandardDelegateAdapter
 import net.pubnative.sdkshowcase.data.models.Quote
@@ -29,6 +31,8 @@ class ItemsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         delegateAdapters.put(AdapterConstants.AD_SMALL_STANDARD, SmallStandardDelegateAdapter())
         delegateAdapters.put(AdapterConstants.AD_MEDIUM_NATIVE, MediumNativeDelegateAdapter())
         delegateAdapters.put(AdapterConstants.AD_MEDIUM_STANDARD, MediumStandardDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.MOPUB_BANNER_STANDARD, MoPubStandardBannerDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.MOPUB_MEDIUM_STANDARD, MoPubStandardMediumDelegateAdapter())
     }
 
     override fun getItemCount(): Int = items.size
