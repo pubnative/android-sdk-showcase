@@ -63,13 +63,9 @@ class FeedSmallFragment : RecyclerViewFragment() {
 
     fun addNativeAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, SmallNativeAd(SMALL_PLACEMENT_ID))
-        //list.add(INJECT_MOPUB_AD_POSITION, MoPubNativeBanner(MOPUB_NATIVE_AD_UNIT_ID))
-        list.add(INJECT_ADMOB_AD_POSITION, AdmobNativeBanner(ADMOB_NATIVE_BANNER_AD_UNIT_ID))
     }
 
     fun addStandardAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, SmallStandardAd(SMALL_PLACEMENT_ID))
-        list.add(INJECT_MOPUB_AD_POSITION, MoPubStandardBanner(MOPUB_BANNER_AD_UNIT_ID))
-        list.add(INJECT_ADMOB_AD_POSITION, AdmobStandardBanner(ADMOB_BANNER_AD_UNIT_ID))
     }
 }

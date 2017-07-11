@@ -5,6 +5,7 @@ package net.pubnative.sdkshowcase.settings
  */
 object SettingsConstants {
     val SETTING_DEMMAND_TYPE = "demand_type"
+    val SETTING_NATIVE_DEFAULT = "native_by_default"
 
     val DEMAND_TYPE_NATIVE = 1
     val DEMAND_TYPE_STANDARD = 2

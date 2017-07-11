@@ -13,6 +13,7 @@
     <string name="config_standard">Standard</string>
     <string name="config_video">Video</string>
     <string name="config_ad_tag">Ad-Tag</string>
+    <string name="config_native_default">Native by default</string>
 
 
 </resources>

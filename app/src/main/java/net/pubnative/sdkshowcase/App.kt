@@ -1,8 +1,6 @@
 package net.pubnative.sdkshowcase
 
 import android.app.Application
-import com.google.android.gms.ads.MobileAds
-import com.mopub.common.MoPub
 import net.pubnative.sdk.core.Pubnative
 
 /**
@@ -14,7 +12,5 @@ class App : Application() {
 
         Pubnative.setTestMode(true)
         Pubnative.init(applicationContext, APP_TOKEN)
-
-        MobileAds.initialize(applicationContext, ADMOB_APP_ID)
     }
 }

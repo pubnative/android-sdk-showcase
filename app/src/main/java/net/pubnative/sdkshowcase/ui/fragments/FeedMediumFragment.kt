@@ -49,12 +49,9 @@ class FeedMediumFragment : RecyclerViewFragment() {
 
     fun addNativeAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, MediumNativeAd(MEDIUM_PLACEMENT_ID))
-        //list.add(INJECT_MOPUB_AD_POSITION, MoPubNativeMedium(MOPUB_NATIVE_AD_UNIT_ID))
-        list.add(INJECT_ADMOB_AD_POSITION, AdmobNativeMedium(ADMOB_NATIVE_MEDIUM_AD_UNIT_ID))
     }
 
     fun addStandardAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, MediumStandardAd(MEDIUM_PLACEMENT_ID))
-        list.add(INJECT_MOPUB_AD_POSITION, MoPubStandardMedium(MOPUB_MEDIUM_AD_UNIT_ID))
     }
 }

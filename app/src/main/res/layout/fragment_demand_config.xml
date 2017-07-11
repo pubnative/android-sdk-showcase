@@ -51,5 +51,21 @@
                 android:text="@string/config_ad_tag"
                 android:textSize="@dimen/radio_text_size" />
         </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/background_dark" />
+
+        <CheckBox
+            android:id="@+id/pubnative_native_default_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/side_margin"
+            android:layout_marginRight="@dimen/side_margin"
+            android:layout_marginTop="8dp"
+            android:text="@string/config_native_default"
+            android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>

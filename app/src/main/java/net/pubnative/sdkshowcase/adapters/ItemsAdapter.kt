@@ -5,10 +5,8 @@ import android.util.SparseArray
 import android.view.ViewGroup
 import net.pubnative.sdkshowcase.adapters.delegateadapters.QuoteDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.ViewTypeDelegateAdapter
-import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.AdmobNativeMediumDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MediumNativeDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MediumStandardDelegateAdapter
-import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MoPubStandardMediumDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.small.*
 import net.pubnative.sdkshowcase.data.models.Quote
 import net.pubnative.sdkshowcase.ui.views.DestroyableView
@@ -30,12 +28,6 @@ class ItemsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         delegateAdapters.put(AdapterConstants.AD_SMALL_STANDARD, SmallStandardDelegateAdapter())
         delegateAdapters.put(AdapterConstants.AD_MEDIUM_NATIVE, MediumNativeDelegateAdapter())
         delegateAdapters.put(AdapterConstants.AD_MEDIUM_STANDARD, MediumStandardDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.MOPUB_BANNER_STANDARD, MoPubStandardBannerDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.MOPUB_MEDIUM_STANDARD, MoPubStandardMediumDelegateAdapter())
-
-        delegateAdapters.put(AdapterConstants.ADMOB_BANNER_STANDARD, AdmobStandardBannerDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.ADMOB_BANNER_NATIVE, AdmobNativeBannerDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.ADMOB_MEDIUM_NATIVE, AdmobNativeMediumDelegateAdapter())
     }
 
     override fun getItemCount(): Int = items.size
