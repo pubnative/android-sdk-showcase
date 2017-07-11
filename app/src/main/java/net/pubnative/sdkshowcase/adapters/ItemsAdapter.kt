@@ -24,8 +24,10 @@ class ItemsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         delegateAdapters = SparseArray<ViewTypeDelegateAdapter>()
 
         delegateAdapters.put(AdapterConstants.QUOTE, QuoteDelegateAdapter())
+
         delegateAdapters.put(AdapterConstants.AD_SMALL_NATIVE, SmallNativeDelegateAdapter())
         delegateAdapters.put(AdapterConstants.AD_SMALL_STANDARD, SmallStandardDelegateAdapter())
+
         delegateAdapters.put(AdapterConstants.AD_MEDIUM_NATIVE, MediumNativeDelegateAdapter())
         delegateAdapters.put(AdapterConstants.AD_MEDIUM_STANDARD, MediumStandardDelegateAdapter())
     }

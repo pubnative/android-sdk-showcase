@@ -16,56 +16,23 @@ import net.pubnative.sdkshowcase.ui.views.ViewType
  */
 class FeedSmallFragment : RecyclerViewFragment() {
 
-    override fun injectAds(quotes: ArrayList<ViewType>) {
-        super.injectAds(quotes)
-        addDemandTypeAds(quotes)
-    }
-
-    fun getDemandTypeAd(): ViewType {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
-            when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> return SmallNativeAd(SMALL_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_STANDARD -> return SmallStandardAd(SMALL_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_VIDEO -> return SmallNativeAd(SMALL_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_AD_TAG -> return SmallNativeAd(SMALL_PLACEMENT_ID)
-                else -> return SmallNativeAd(SMALL_PLACEMENT_ID)
-            }
-        } else {
-            return SmallNativeAd(SMALL_PLACEMENT_ID)
-        }
-    }
-
-    fun addDemandTypeAds(quotes: ArrayList<ViewType>) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
-            when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> {
-                    addNativeAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_STANDARD -> {
-                    addStandardAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_VIDEO -> {
-                    addNativeAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_AD_TAG -> {
-                    addNativeAds(quotes)
-                }
-                else -> {
-                    addNativeAds(quotes)
-                }
-            }
-        } else {
-            addNativeAds(quotes)
-        }
-    }
-
-    fun addNativeAds(list: ArrayList<ViewType>) {
+    override fun addNativeAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, SmallNativeAd(SMALL_PLACEMENT_ID))
     }
 
-    fun addStandardAds(list: ArrayList<ViewType>) {
+    override fun addStandardAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, SmallStandardAd(SMALL_PLACEMENT_ID))
+    }
+
+    override fun addVideoAds(list: ArrayList<ViewType>) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        if (preferences.contains(SettingsConstants.SETTING_NATIVE_DEFAULT)
+                && preferences.getBoolean(SettingsConstants.SETTING_NATIVE_DEFAULT, true)) {
+            addNativeAds(list)
+        }
+    }
+
+    override fun addAdTags(list: ArrayList<ViewType>) {
+        list.add(INJECT_PUBNATIVE_AD_POSITION, SmallStandardAd(SMALL_AD_TAG_PLACEMENT_ID))
     }
 }

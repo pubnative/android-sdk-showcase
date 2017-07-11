@@ -1,6 +1,7 @@
 package net.pubnative.sdkshowcase.ui.fragments
 
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,8 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_interstitial.*
 import net.pubnative.sdk.layouts.PNLargeLayout
 import net.pubnative.sdk.layouts.PNLayout
-import net.pubnative.sdkshowcase.APP_TOKEN
-import net.pubnative.sdkshowcase.LARGE_PLACEMENT_ID
-import net.pubnative.sdkshowcase.R
+import net.pubnative.sdkshowcase.*
+import net.pubnative.sdkshowcase.settings.SettingsConstants
 import java.lang.Exception
 
 /**
@@ -34,6 +34,10 @@ class InterstitialFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupInterstitial()
+    }
+
+    fun setupInterstitial() {
         largeLayout.setLoadListener(object : PNLayout.LoadListener {
             override fun onPNLayoutLoadFail(layout: PNLayout?, error: Exception?) {
                 Toast.makeText(context,
@@ -77,11 +81,28 @@ class InterstitialFragment : Fragment() {
             }
         })
 
-        largeLayout.load(context, APP_TOKEN, LARGE_PLACEMENT_ID)
+        largeLayout.load(context, APP_TOKEN, getDemandTypePlacement())
+    }
+
+    fun getDemandTypePlacement() : String {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
+            when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
+                SettingsConstants.DEMAND_TYPE_NATIVE -> return LARGE_PLACEMENT_ID
+                SettingsConstants.DEMAND_TYPE_STANDARD -> return LARGE_PLACEMENT_ID
+                SettingsConstants.DEMAND_TYPE_VIDEO -> return LARGE_VIDEO_PLACEMENT_ID
+                SettingsConstants.DEMAND_TYPE_AD_TAG -> return LARGE_AD_TAG_PLACEMENT_ID
+                else -> return LARGE_PLACEMENT_ID
+            }
+        } else {
+            return LARGE_PLACEMENT_ID
+        }
     }
 
     fun showInterstitial() {
-        progress.visibility = View.INVISIBLE
-        largeLayout.show()
+        if (isResumed) {
+            progress.visibility = View.INVISIBLE
+            largeLayout.show()
+        }
     }
 }

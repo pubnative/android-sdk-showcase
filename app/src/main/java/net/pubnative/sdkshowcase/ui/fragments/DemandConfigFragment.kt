@@ -48,28 +48,36 @@ class DemandConfigFragment : Fragment() {
 
         when (currentChoice) {
             SettingsConstants.DEMAND_TYPE_NATIVE -> {
-                chooseItem(R.id.pubnative_native_radio)
+                chooseRadioItem(R.id.pubnative_native_radio)
             }
             SettingsConstants.DEMAND_TYPE_STANDARD -> {
-                chooseItem(R.id.pubnative_standard_radio)
+                chooseRadioItem(R.id.pubnative_standard_radio)
             }
             SettingsConstants.DEMAND_TYPE_VIDEO -> {
-                chooseItem(R.id.pubnative_video_radio)
+                chooseRadioItem(R.id.pubnative_video_radio)
             }
             SettingsConstants.DEMAND_TYPE_AD_TAG -> {
-                chooseItem(R.id.pubnative_adtag_radio)
+                chooseRadioItem(R.id.pubnative_adtag_radio)
             }
             else -> {
-                chooseItem(R.id.pubnative_native_radio)
+                chooseRadioItem(R.id.pubnative_native_radio)
             }
         }
 
-        pubnative_native_default_check.isChecked = preferences?.getBoolean(SettingsConstants.SETTING_NATIVE_DEFAULT, true)!!
+        val nativeByDefault = preferences?.getBoolean(SettingsConstants.SETTING_NATIVE_DEFAULT, true)
+
+        checkNativeByDefault(nativeByDefault!!)
     }
 
-    fun chooseItem(id: Int) {
+    fun chooseRadioItem(id: Int) {
         pubnative_config_radio_group.post {
             pubnative_config_radio_group.check(id)
+        }
+    }
+
+    fun checkNativeByDefault(checked: Boolean) {
+        pubnative_native_default_check.post {
+            pubnative_native_default_check.isChecked = checked
         }
     }
 

@@ -16,42 +16,19 @@ import net.pubnative.sdkshowcase.ui.views.ViewType
  */
 class FeedMediumFragment : RecyclerViewFragment() {
 
-    override fun injectAds(quotes: ArrayList<ViewType>) {
-        super.injectAds(quotes)
-        addDemandTypeAds(quotes)
-
-    }
-
-    fun addDemandTypeAds(quotes: ArrayList<ViewType>) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
-            when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> {
-                    addNativeAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_STANDARD -> {
-                    addStandardAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_VIDEO -> {
-                    addNativeAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_AD_TAG -> {
-                    addNativeAds(quotes)
-                }
-                else -> {
-                    addNativeAds(quotes)
-                }
-            }
-        } else {
-            addNativeAds(quotes)
-        }
-    }
-
-    fun addNativeAds(list: ArrayList<ViewType>) {
+    override fun addNativeAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, MediumNativeAd(MEDIUM_PLACEMENT_ID))
     }
 
-    fun addStandardAds(list: ArrayList<ViewType>) {
+    override fun addStandardAds(list: ArrayList<ViewType>) {
         list.add(INJECT_PUBNATIVE_AD_POSITION, MediumStandardAd(MEDIUM_PLACEMENT_ID))
+    }
+
+    override fun addVideoAds(list: ArrayList<ViewType>) {
+        list.add(INJECT_PUBNATIVE_AD_POSITION, MediumStandardAd(MEDIUM_VIDEO_PLACEMENT_ID))
+    }
+
+    override fun addAdTags(list: ArrayList<ViewType>) {
+        list.add(INJECT_PUBNATIVE_AD_POSITION, MediumStandardAd(MEDIUM_AD_TAG_PLACEMENT_ID))
     }
 }

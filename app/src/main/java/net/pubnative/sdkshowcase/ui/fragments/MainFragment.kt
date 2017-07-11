@@ -2,6 +2,7 @@ package net.pubnative.sdkshowcase.ui.fragments
 
 import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import net.pubnative.sdkshowcase.R
 
 import kotlinx.android.synthetic.main.fragment_main.*
+import net.pubnative.sdkshowcase.settings.SettingsConstants
 import net.pubnative.sdkshowcase.ui.activities.*
 
 /**
@@ -46,5 +48,23 @@ class MainFragment : Fragment() {
         interstitial_button.setOnClickListener({ view ->
             InterstitialActivity.start(context)
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkAvailableDemandTypes()
+    }
+
+    fun checkAvailableDemandTypes() {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val demandType = preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)
+        val nativeByDefault = preferences.getBoolean(SettingsConstants.SETTING_NATIVE_DEFAULT, true)
+
+        toggleNonVideoButtons(!(demandType == SettingsConstants.DEMAND_TYPE_VIDEO && !nativeByDefault))
+    }
+
+    fun toggleNonVideoButtons(enabled: Boolean) {
+        feed_small_button.isEnabled = enabled
+        banner_button.isEnabled = enabled
     }
 }
