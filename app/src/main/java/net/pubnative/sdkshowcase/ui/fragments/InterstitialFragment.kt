@@ -84,7 +84,7 @@ class InterstitialFragment : Fragment() {
         largeLayout.load(context, APP_TOKEN, getDemandTypePlacement())
     }
 
-    fun getDemandTypePlacement() : String {
+    fun getDemandTypePlacement(): String {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
             when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
