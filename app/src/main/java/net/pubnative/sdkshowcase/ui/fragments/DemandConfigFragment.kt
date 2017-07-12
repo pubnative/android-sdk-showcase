@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckedTextView
-import android.widget.CompoundButton
 import kotlinx.android.synthetic.main.fragment_demand_config.*
 import net.pubnative.sdkshowcase.R
 import net.pubnative.sdkshowcase.settings.SettingsConstants
