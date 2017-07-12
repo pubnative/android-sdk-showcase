@@ -23,12 +23,22 @@ import net.pubnative.sdkshowcase.data.models.SmallNativeAd
 import net.pubnative.sdkshowcase.data.models.SmallStandardAd
 import net.pubnative.sdkshowcase.data.source.DataSource
 import net.pubnative.sdkshowcase.settings.SettingsConstants
+import net.pubnative.sdkshowcase.ui.contracts.ListFragmentContract
+import net.pubnative.sdkshowcase.ui.presenters.ItemFeedPresenter
 import net.pubnative.sdkshowcase.ui.views.ViewType
 
 /**
  * Created by erosgarciaponte on 06.07.17.
  */
-open class RecyclerViewFragment : Fragment() {
+open class RecyclerViewFragment : Fragment(), ListFragmentContract.View {
+    var presenter: ListFragmentContract.Presenter? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        presenter = getViewPresenter()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_recycler, container, false)
@@ -46,7 +56,7 @@ open class RecyclerViewFragment : Fragment() {
 
         initAdapter()
 
-        requestQuotes()
+        presenter?.loadList()
     }
 
     fun initAdapter() {
@@ -55,60 +65,15 @@ open class RecyclerViewFragment : Fragment() {
         }
     }
 
-    fun requestQuotes() {
-        val quotesRepository = QuotesRepository(context)
-        quotesRepository.getAll(object : DataSource.Callback<Quote> {
-            override fun onSuccess(list: List<Quote>) {
-                val adapterList = ArrayList<ViewType>()
-                adapterList.addAll(list)
-                injectAds(adapterList)
-                (recycler_view.adapter as ItemsAdapter).addQuotes(adapterList)
-            }
-
-            override fun onError(throwable: Throwable) {
-                Toast.makeText(context, throwable.message ?: "Error fetching quotes", Toast.LENGTH_LONG).show()
-            }
-        })
+    open fun getViewPresenter() : ListFragmentContract.Presenter {
+        return ItemFeedPresenter(context, this)
     }
 
-    fun addDemandTypeAds(quotes: ArrayList<ViewType>) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
-            when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> {
-                    addNativeAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_STANDARD -> {
-                    addStandardAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_VIDEO -> {
-                    addVideoAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_AD_TAG -> {
-                    addAdTags(quotes)
-                }
-                else -> {
-                    addNativeAds(quotes)
-                }
-            }
-        } else {
-            addNativeAds(quotes)
-        }
+    override fun showError(throwable: Throwable) {
+        Toast.makeText(context, throwable.message ?: "Error fetching quotes", Toast.LENGTH_LONG).show()
     }
 
-    /**
-     * Inject ads into list in child classes
-     */
-    fun injectAds(quotes: ArrayList<ViewType>) {
-        addDemandTypeAds(quotes)
+    override fun showItems(items: ArrayList<ViewType>) {
+        (recycler_view.adapter as ItemsAdapter).addQuotes(items)
     }
-
-    open fun addNativeAds(list: ArrayList<ViewType>) {}
-
-    open fun addStandardAds(list: ArrayList<ViewType>) {}
-
-    open fun addVideoAds(list: ArrayList<ViewType>) {}
-
-    open fun addAdTags(list: ArrayList<ViewType>) {}
-
 }
