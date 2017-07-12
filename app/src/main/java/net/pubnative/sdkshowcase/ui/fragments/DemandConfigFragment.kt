@@ -45,21 +45,11 @@ class DemandConfigFragment : Fragment() {
         val currentChoice = preferences?.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)
 
         when (currentChoice) {
-            SettingsConstants.DEMAND_TYPE_NATIVE -> {
-                chooseRadioItem(R.id.pubnative_native_radio)
-            }
-            SettingsConstants.DEMAND_TYPE_STANDARD -> {
-                chooseRadioItem(R.id.pubnative_standard_radio)
-            }
-            SettingsConstants.DEMAND_TYPE_VIDEO -> {
-                chooseRadioItem(R.id.pubnative_video_radio)
-            }
-            SettingsConstants.DEMAND_TYPE_AD_TAG -> {
-                chooseRadioItem(R.id.pubnative_adtag_radio)
-            }
-            else -> {
-                chooseRadioItem(R.id.pubnative_native_radio)
-            }
+            SettingsConstants.DEMAND_TYPE_NATIVE -> chooseRadioItem(R.id.pubnative_native_radio)
+            SettingsConstants.DEMAND_TYPE_STANDARD -> chooseRadioItem(R.id.pubnative_standard_radio)
+            SettingsConstants.DEMAND_TYPE_VIDEO -> chooseRadioItem(R.id.pubnative_video_radio)
+            SettingsConstants.DEMAND_TYPE_AD_TAG -> chooseRadioItem(R.id.pubnative_adtag_radio)
+            else -> chooseRadioItem(R.id.pubnative_native_radio)
         }
 
         val nativeByDefault = preferences?.getBoolean(SettingsConstants.SETTING_NATIVE_DEFAULT, true)

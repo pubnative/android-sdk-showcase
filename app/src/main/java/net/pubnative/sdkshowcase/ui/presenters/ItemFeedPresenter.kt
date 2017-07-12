@@ -32,21 +32,11 @@ open class ItemFeedPresenter(val context: Context,
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
             when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> {
-                    addNativeAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_STANDARD -> {
-                    addStandardAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_VIDEO -> {
-                    addVideoAds(quotes)
-                }
-                SettingsConstants.DEMAND_TYPE_AD_TAG -> {
-                    addAdTags(quotes)
-                }
-                else -> {
-                    addNativeAds(quotes)
-                }
+                SettingsConstants.DEMAND_TYPE_NATIVE -> addNativeAds(quotes)
+                SettingsConstants.DEMAND_TYPE_STANDARD -> addStandardAds(quotes)
+                SettingsConstants.DEMAND_TYPE_VIDEO -> addVideoAds(quotes)
+                SettingsConstants.DEMAND_TYPE_AD_TAG -> addAdTags(quotes)
+                else -> addNativeAds(quotes)
             }
         } else {
             addNativeAds(quotes)

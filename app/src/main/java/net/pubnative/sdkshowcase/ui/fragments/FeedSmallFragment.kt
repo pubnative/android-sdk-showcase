@@ -8,7 +8,5 @@ import net.pubnative.sdkshowcase.ui.presenters.FeedSmallPresenter
  */
 class FeedSmallFragment : RecyclerViewFragment() {
 
-    override fun getViewPresenter(): ListFragmentContract.Presenter {
-        return FeedSmallPresenter(context, this)
-    }
+    override fun getViewPresenter(): ListFragmentContract.Presenter = FeedSmallPresenter(context, this)
 }
