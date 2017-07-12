@@ -8,12 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import kotlinx.android.synthetic.main.fragment_banner.*
-import kotlinx.android.synthetic.main.item_small_native.view.*
-import net.pubnative.sdk.core.request.PNAdModel
-import net.pubnative.sdk.core.request.PNRequest
-import net.pubnative.sdk.layouts.PNLayout
-import net.pubnative.sdk.layouts.PNSmallLayout
-import net.pubnative.sdkshowcase.APP_TOKEN
 import net.pubnative.sdkshowcase.R
 import net.pubnative.sdkshowcase.SMALL_AD_TAG_PLACEMENT_ID
 import net.pubnative.sdkshowcase.SMALL_PLACEMENT_ID
@@ -21,7 +15,6 @@ import net.pubnative.sdkshowcase.settings.SettingsConstants
 import net.pubnative.sdkshowcase.ui.contracts.BannerFragmentContract
 import net.pubnative.sdkshowcase.ui.presenters.NativeBannerPresenter
 import net.pubnative.sdkshowcase.ui.presenters.StandardBannerPresenter
-import java.lang.Exception
 
 /**
  * Created by erosgarciaponte on 05.07.17.
