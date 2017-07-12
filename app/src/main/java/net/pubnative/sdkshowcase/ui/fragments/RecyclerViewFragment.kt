@@ -11,16 +11,7 @@ import net.pubnative.sdkshowcase.R
 
 
 import kotlinx.android.synthetic.main.fragment_recycler.*
-import net.pubnative.sdkshowcase.INJECT_PUBNATIVE_AD_POSITION
-import net.pubnative.sdkshowcase.SMALL_AD_TAG_PLACEMENT_ID
-import net.pubnative.sdkshowcase.SMALL_PLACEMENT_ID
 import net.pubnative.sdkshowcase.adapters.ItemsAdapter
-import net.pubnative.sdkshowcase.data.QuotesRepository
-import net.pubnative.sdkshowcase.data.models.Quote
-import net.pubnative.sdkshowcase.data.models.SmallNativeAd
-import net.pubnative.sdkshowcase.data.models.SmallStandardAd
-import net.pubnative.sdkshowcase.data.source.DataSource
-import net.pubnative.sdkshowcase.settings.SettingsConstants
 import net.pubnative.sdkshowcase.ui.contracts.ListFragmentContract
 import net.pubnative.sdkshowcase.ui.presenters.ItemFeedPresenter
 import net.pubnative.sdkshowcase.ui.views.ViewType
