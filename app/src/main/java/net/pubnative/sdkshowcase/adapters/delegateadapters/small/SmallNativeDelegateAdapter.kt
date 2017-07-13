@@ -1,9 +1,12 @@
 package net.pubnative.sdkshowcase.adapters.delegateadapters.small
 
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import kotlinx.android.synthetic.main.item_small_native.view.*
+import kotlinx.android.synthetic.main.layout_small_native.view.*
 import net.pubnative.sdk.core.request.PNAdModel
 import net.pubnative.sdk.core.request.PNRequest
 import net.pubnative.sdkshowcase.APP_TOKEN
@@ -31,6 +34,7 @@ class SmallNativeDelegateAdapter : ViewTypeDelegateAdapter {
 
         val smallRequest: PNRequest
         var smallAdModel: PNAdModel? = null
+        var nativeAdView: ViewGroup? = null
 
         init {
             smallRequest = PNRequest()
@@ -58,22 +62,22 @@ class SmallNativeDelegateAdapter : ViewTypeDelegateAdapter {
 
         fun renderAd() {
             if (smallAdModel != null) {
+                nativeAdView = LayoutInflater.from(itemView.context).inflate(R.layout.layout_small_native, null, false) as ViewGroup
+                itemView.ad_container.addView(nativeAdView)
+                itemView.visibility = View.VISIBLE
+
                 smallAdModel!!
-                        .withIcon(itemView.native_icon as ImageView)
-                        .withTitle(itemView.native_title as TextView)
-                        .withDescription(itemView.native_description as TextView)
-                        .withCallToAction(itemView.native_call_to_action as Button)
-                        .withContentInfoContainer(itemView.native_disclaimer as FrameLayout)
-                        .startTracking(itemView as ViewGroup)
+                        .withIcon(nativeAdView?.native_icon as ImageView)
+                        .withTitle(nativeAdView?.native_title as TextView)
+                        .withDescription(nativeAdView?.native_description as TextView)
+                        .withCallToAction(nativeAdView?.native_call_to_action as Button)
+                        .withContentInfoContainer(nativeAdView?.native_disclaimer as FrameLayout)
+                        .startTracking(nativeAdView as ViewGroup)
             }
         }
 
         fun cleanView() {
-            (itemView.native_disclaimer as FrameLayout).removeAllViews()
-            (itemView.native_title as TextView).text = ""
-            (itemView.native_description as TextView).text = ""
-            (itemView.native_icon as ImageView).setImageDrawable(null)
-            (itemView.native_call_to_action as Button).text = ""
+            itemView.ad_container.removeAllViews()
         }
 
         override fun destroy() {
