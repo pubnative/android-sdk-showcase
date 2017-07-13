@@ -4,10 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.*
-import kotlinx.android.synthetic.main.item_small_native.view.*
+import kotlinx.android.synthetic.main.layout_small_native.view.*
 import net.pubnative.sdk.core.request.PNAdModel
 import net.pubnative.sdk.core.request.PNRequest
-import net.pubnative.sdk.layouts.PNLayout
 import net.pubnative.sdkshowcase.APP_TOKEN
 import net.pubnative.sdkshowcase.R
 import net.pubnative.sdkshowcase.ui.contracts.BannerFragmentContract
@@ -50,7 +49,7 @@ class NativeBannerPresenter(val context: Context,
         nativeAdModel = adModel
         adModel?.setListener(this)
 
-        nativeAdView = LayoutInflater.from(context).inflate(R.layout.item_small_native, null, false) as ViewGroup
+        nativeAdView = LayoutInflater.from(context).inflate(R.layout.layout_small_native, null, false) as ViewGroup
         view.setView(nativeAdView!!)
 
         nativeAdModel?.withIcon(nativeAdView?.native_icon as ImageView)

@@ -1,6 +1,7 @@
 package net.pubnative.sdkshowcase.adapters.delegateadapters.small
 
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -52,6 +53,7 @@ class SmallStandardDelegateAdapter : ViewTypeDelegateAdapter {
         override fun onPNLayoutLoadFinish(layout: PNLayout?) {
             smallLayout.startTrackingView()
             (itemView as FrameLayout).addView(smallLayout.getView(itemView.context))
+            itemView.visibility = View.VISIBLE
         }
 
         override fun onPNLayoutTrackClick(layout: PNLayout?) {

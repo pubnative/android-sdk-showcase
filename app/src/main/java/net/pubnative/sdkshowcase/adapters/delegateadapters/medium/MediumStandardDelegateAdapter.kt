@@ -1,6 +1,7 @@
 package net.pubnative.sdkshowcase.adapters.delegateadapters.medium
 
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -52,6 +53,7 @@ class MediumStandardDelegateAdapter : ViewTypeDelegateAdapter {
         override fun onPNLayoutLoadFinish(layout: PNLayout?) {
             mediumLayout.startTrackingView()
             (itemView as FrameLayout).addView(mediumLayout.getView(itemView.context))
+            itemView.visibility = View.VISIBLE
         }
 
         override fun onPNLayoutTrackClick(layout: PNLayout?) {
