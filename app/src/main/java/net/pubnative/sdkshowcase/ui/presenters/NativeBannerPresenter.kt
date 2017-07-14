@@ -52,11 +52,13 @@ class NativeBannerPresenter(val context: Context,
         nativeAdView = LayoutInflater.from(context).inflate(R.layout.layout_small_native, null, false) as ViewGroup
         view.setView(nativeAdView!!)
 
-        nativeAdModel?.withIcon(nativeAdView?.native_icon as ImageView)
-                ?.withTitle(nativeAdView?.native_title as TextView)
-                ?.withDescription(nativeAdView?.native_description as TextView)
-                ?.withCallToAction(nativeAdView?.native_call_to_action as Button)
-                ?.withContentInfoContainer(nativeAdView?.native_disclaimer as FrameLayout)
+        nativeAdModel?.let {
+            it.withIcon(nativeAdView?.native_icon as ImageView)
+                    .withTitle(nativeAdView?.native_title as TextView)
+                    .withDescription(nativeAdView?.native_description as TextView)
+                    .withCallToAction(nativeAdView?.native_call_to_action as Button)
+                    .withContentInfoContainer(nativeAdView?.native_disclaimer as FrameLayout)
+        }
     }
 
     override fun onPNAdClick(adModel: PNAdModel?) {

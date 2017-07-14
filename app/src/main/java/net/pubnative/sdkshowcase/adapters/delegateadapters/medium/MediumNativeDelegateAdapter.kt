@@ -66,15 +66,16 @@ class MediumNativeDelegateAdapter : ViewTypeDelegateAdapter {
                 itemView.ad_container.addView(nativeAdView)
                 itemView.visibility = View.VISIBLE
 
-                mediumAdModel!!
-                        .withIcon(nativeAdView?.native_icon as ImageView)
-                        .withTitle(nativeAdView?.native_title as TextView)
-                        .withRating(nativeAdView?.native_rating as RatingBar)
-                        .withBanner(nativeAdView?.native_banner as FrameLayout)
-                        .withDescription(nativeAdView?.native_description as TextView)
-                        .withCallToAction(nativeAdView?.native_call_to_action as Button)
-                        .withContentInfoContainer(nativeAdView?.native_disclaimer as FrameLayout)
-                        .startTracking(nativeAdView as ViewGroup)
+                mediumAdModel?.let {
+                    it.withIcon(nativeAdView?.native_icon as ImageView)
+                            .withTitle(nativeAdView?.native_title as TextView)
+                            .withRating(nativeAdView?.native_rating as RatingBar)
+                            .withBanner(nativeAdView?.native_banner as FrameLayout)
+                            .withDescription(nativeAdView?.native_description as TextView)
+                            .withCallToAction(nativeAdView?.native_call_to_action as Button)
+                            .withContentInfoContainer(nativeAdView?.native_disclaimer as FrameLayout)
+                            .startTracking(nativeAdView as ViewGroup)
+                }
             }
         }
 
