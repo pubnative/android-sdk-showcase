@@ -10,7 +10,7 @@ import net.pubnative.sdk.layouts.PNSmallLayout
 import net.pubnative.sdkshowcase.APP_TOKEN
 import net.pubnative.sdkshowcase.R
 import net.pubnative.sdkshowcase.adapters.delegateadapters.ViewTypeDelegateAdapter
-import net.pubnative.sdkshowcase.data.models.SmallStandardAd
+import net.pubnative.sdkshowcase.data.models.SmallAssetGroupAd
 import net.pubnative.sdkshowcase.ui.views.DestroyableView
 import net.pubnative.sdkshowcase.ui.views.ViewType
 import net.pubnative.sdkshowcase.util.inflate
@@ -23,7 +23,7 @@ class SmallStandardDelegateAdapter : ViewTypeDelegateAdapter {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = SmallStandardViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
-        item as SmallStandardAd
+        item as SmallAssetGroupAd
         (holder as SmallStandardViewHolder).bind(item)
     }
 
@@ -38,7 +38,7 @@ class SmallStandardDelegateAdapter : ViewTypeDelegateAdapter {
             smallLayout.setTrackListener(this)
         }
 
-        fun bind(item: SmallStandardAd) = with(itemView) {
+        fun bind(item: SmallAssetGroupAd) = with(itemView) {
             smallLayout.load(context, APP_TOKEN, item.placementId)
         }
 

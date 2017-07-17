@@ -6,9 +6,6 @@ package net.pubnative.sdkshowcase.adapters
 object AdapterConstants {
     val QUOTE = 1
 
-    val AD_SMALL_STANDARD = 2
-    val AD_SMALL_NATIVE = 3
-
-    val AD_MEDIUM_STANDARD = 4
-    val AD_MEDIUM_NATIVE = 5
+    val AD_SMALL_ASSET_GROUP = 2
+    val AD_MEDIUM_ASSET_GROUP = 3
 }

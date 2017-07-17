@@ -11,9 +11,9 @@ import java.lang.Exception
 /**
  * Created by erosgarciaponte on 11.07.17.
  */
-class StandardBannerPresenter(val context: Context,
-                              val view: BannerFragmentContract.View,
-                              val placementId: String) : BannerFragmentContract.Presenter,
+class AssetGroupBannerPresenter(val context: Context,
+                                val view: BannerFragmentContract.View,
+                                val placementId: String) : BannerFragmentContract.Presenter,
         PNLayout.TrackListener, PNLayout.LoadListener {
 
     val banner: PNSmallLayout

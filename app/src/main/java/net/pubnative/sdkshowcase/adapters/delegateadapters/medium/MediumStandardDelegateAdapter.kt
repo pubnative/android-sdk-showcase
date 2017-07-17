@@ -10,7 +10,7 @@ import net.pubnative.sdk.layouts.PNMediumLayout
 import net.pubnative.sdkshowcase.APP_TOKEN
 import net.pubnative.sdkshowcase.R
 import net.pubnative.sdkshowcase.adapters.delegateadapters.ViewTypeDelegateAdapter
-import net.pubnative.sdkshowcase.data.models.MediumStandardAd
+import net.pubnative.sdkshowcase.data.models.MediumAssetGroupAd
 import net.pubnative.sdkshowcase.ui.views.DestroyableView
 import net.pubnative.sdkshowcase.ui.views.ViewType
 import net.pubnative.sdkshowcase.util.inflate
@@ -23,7 +23,7 @@ class MediumStandardDelegateAdapter : ViewTypeDelegateAdapter {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = MediumStandardViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
-        item as MediumStandardAd
+        item as MediumAssetGroupAd
         (holder as MediumStandardViewHolder).bind(item)
     }
 
@@ -38,7 +38,7 @@ class MediumStandardDelegateAdapter : ViewTypeDelegateAdapter {
             mediumLayout.setTrackListener(this)
         }
 
-        fun bind(item: MediumStandardAd) = with(itemView) {
+        fun bind(item: MediumAssetGroupAd) = with(itemView) {
             mediumLayout.load(context, APP_TOKEN, item.placementId)
         }
 

@@ -6,15 +6,14 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
 import kotlinx.android.synthetic.main.fragment_banner.*
 import net.pubnative.sdkshowcase.R
 import net.pubnative.sdkshowcase.SMALL_AD_TAG_PLACEMENT_ID
-import net.pubnative.sdkshowcase.SMALL_PLACEMENT_ID
+import net.pubnative.sdkshowcase.SMALL_NATIVE_PLACEMENT_ID
+import net.pubnative.sdkshowcase.SMALL_STANDARD_PLACEMENT_ID
 import net.pubnative.sdkshowcase.settings.SettingsConstants
 import net.pubnative.sdkshowcase.ui.contracts.BannerFragmentContract
-import net.pubnative.sdkshowcase.ui.presenters.NativeBannerPresenter
-import net.pubnative.sdkshowcase.ui.presenters.StandardBannerPresenter
+import net.pubnative.sdkshowcase.ui.presenters.AssetGroupBannerPresenter
 
 /**
  * Created by erosgarciaponte on 05.07.17.
@@ -31,14 +30,14 @@ class BannerFragment : Fragment(), BannerFragmentContract.View {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
             when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> return NativeBannerPresenter(context, this, SMALL_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_STANDARD -> return StandardBannerPresenter(context, this, SMALL_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_VIDEO -> return NativeBannerPresenter(context, this, SMALL_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_AD_TAG -> return StandardBannerPresenter(context, this, SMALL_AD_TAG_PLACEMENT_ID)
-                else -> return NativeBannerPresenter(context, this, SMALL_PLACEMENT_ID)
+                SettingsConstants.DEMAND_TYPE_NATIVE -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
+                SettingsConstants.DEMAND_TYPE_STANDARD -> return AssetGroupBannerPresenter(context, this, SMALL_STANDARD_PLACEMENT_ID)
+                SettingsConstants.DEMAND_TYPE_VIDEO -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
+                SettingsConstants.DEMAND_TYPE_AD_TAG -> return AssetGroupBannerPresenter(context, this, SMALL_AD_TAG_PLACEMENT_ID)
+                else -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
             }
         } else {
-            return NativeBannerPresenter(context, this, SMALL_PLACEMENT_ID)
+            return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
         }
     }
 

@@ -5,7 +5,6 @@ import android.util.SparseArray
 import android.view.ViewGroup
 import net.pubnative.sdkshowcase.adapters.delegateadapters.QuoteDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.ViewTypeDelegateAdapter
-import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MediumNativeDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.medium.MediumStandardDelegateAdapter
 import net.pubnative.sdkshowcase.adapters.delegateadapters.small.*
 import net.pubnative.sdkshowcase.data.models.Quote
@@ -25,11 +24,8 @@ class ItemsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         delegateAdapters.put(AdapterConstants.QUOTE, QuoteDelegateAdapter())
 
-        delegateAdapters.put(AdapterConstants.AD_SMALL_NATIVE, SmallNativeDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.AD_SMALL_STANDARD, SmallStandardDelegateAdapter())
-
-        delegateAdapters.put(AdapterConstants.AD_MEDIUM_NATIVE, MediumNativeDelegateAdapter())
-        delegateAdapters.put(AdapterConstants.AD_MEDIUM_STANDARD, MediumStandardDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.AD_SMALL_ASSET_GROUP, SmallStandardDelegateAdapter())
+        delegateAdapters.put(AdapterConstants.AD_MEDIUM_ASSET_GROUP, MediumStandardDelegateAdapter())
     }
 
     override fun getItemCount(): Int = items.size

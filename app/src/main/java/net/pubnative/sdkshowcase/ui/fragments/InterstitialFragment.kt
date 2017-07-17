@@ -88,14 +88,14 @@ class InterstitialFragment : Fragment() {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
             when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> return LARGE_PLACEMENT_ID
-                SettingsConstants.DEMAND_TYPE_STANDARD -> return LARGE_PLACEMENT_ID
+                SettingsConstants.DEMAND_TYPE_NATIVE -> return LARGE_NATIVE_PLACEMENT_ID
+                SettingsConstants.DEMAND_TYPE_STANDARD -> return LARGE_STANDARD_PLACEMENT_ID
                 SettingsConstants.DEMAND_TYPE_VIDEO -> return LARGE_VIDEO_PLACEMENT_ID
                 SettingsConstants.DEMAND_TYPE_AD_TAG -> return LARGE_AD_TAG_PLACEMENT_ID
-                else -> return LARGE_PLACEMENT_ID
+                else -> return LARGE_NATIVE_PLACEMENT_ID
             }
         } else {
-            return LARGE_PLACEMENT_ID
+            return LARGE_NATIVE_PLACEMENT_ID
         }
     }
 
