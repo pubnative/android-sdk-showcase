@@ -28,16 +28,12 @@ class BannerFragment : Fragment(), BannerFragmentContract.View {
 
     fun getDemandTypePresenter(): BannerFragmentContract.Presenter {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        if (preferences.contains(SettingsConstants.SETTING_DEMMAND_TYPE)) {
-            when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
-                SettingsConstants.DEMAND_TYPE_NATIVE -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_STANDARD -> return AssetGroupBannerPresenter(context, this, SMALL_STANDARD_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_VIDEO -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
-                SettingsConstants.DEMAND_TYPE_AD_TAG -> return AssetGroupBannerPresenter(context, this, SMALL_AD_TAG_PLACEMENT_ID)
-                else -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
-            }
-        } else {
-            return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
+        when (preferences.getInt(SettingsConstants.SETTING_DEMMAND_TYPE, SettingsConstants.DEMAND_TYPE_NATIVE)) {
+            SettingsConstants.DEMAND_TYPE_NATIVE -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
+            SettingsConstants.DEMAND_TYPE_STANDARD -> return AssetGroupBannerPresenter(context, this, SMALL_STANDARD_PLACEMENT_ID)
+            SettingsConstants.DEMAND_TYPE_VIDEO -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
+            SettingsConstants.DEMAND_TYPE_AD_TAG -> return AssetGroupBannerPresenter(context, this, SMALL_AD_TAG_PLACEMENT_ID)
+            else -> return AssetGroupBannerPresenter(context, this, SMALL_NATIVE_PLACEMENT_ID)
         }
     }
 

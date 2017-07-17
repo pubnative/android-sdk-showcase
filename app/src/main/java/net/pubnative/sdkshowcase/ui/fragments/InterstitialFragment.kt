@@ -43,9 +43,9 @@ class InterstitialFragment : Fragment() {
     fun setupInterstitial() {
         largeLayout.setLoadListener(object : PNLayout.LoadListener {
             override fun onPNLayoutLoadFail(layout: PNLayout?, error: Exception?) {
-                Log.d(TAG, error!!.message ?: "An error occurred while trying to load the ad")
+                Log.d(TAG, error?.message ?: "An error occurred while trying to load the ad")
                 Toast.makeText(context,
-                        error!!.message ?: "An error occurred while trying to load the ad",
+                        error?.message ?: "An error occurred while trying to load the ad",
                         Toast.LENGTH_LONG).show()
                 progress.visibility = View.GONE
             }
