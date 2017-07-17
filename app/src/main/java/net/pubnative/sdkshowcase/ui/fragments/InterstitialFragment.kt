@@ -3,6 +3,7 @@ package net.pubnative.sdkshowcase.ui.fragments
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,8 @@ import java.lang.Exception
  * Created by erosgarciaponte on 05.07.17.
  */
 class InterstitialFragment : Fragment() {
+
+    private val TAG = InterstitialFragment::class.java.simpleName
 
     val largeLayout: PNLargeLayout
 
@@ -40,6 +43,7 @@ class InterstitialFragment : Fragment() {
     fun setupInterstitial() {
         largeLayout.setLoadListener(object : PNLayout.LoadListener {
             override fun onPNLayoutLoadFail(layout: PNLayout?, error: Exception?) {
+                Log.d(TAG, error!!.message ?: "An error occurred while trying to load the ad")
                 Toast.makeText(context,
                         error!!.message ?: "An error occurred while trying to load the ad",
                         Toast.LENGTH_LONG).show()
@@ -55,29 +59,21 @@ class InterstitialFragment : Fragment() {
         largeLayout.setTrackListener(object : PNLayout.TrackListener {
             override fun onPNLayoutTrackClick(layout: PNLayout?) {
                 largeLayout.hide()
-                Toast.makeText(context,
-                        "onPNLayoutTrackClick",
-                        Toast.LENGTH_LONG).show()
+                Log.d(TAG, "onPNLayoutTrackClick")
             }
 
             override fun onPNLayoutTrackImpression(layout: PNLayout?) {
-                Toast.makeText(context,
-                        "onPNLayoutTrackImpression",
-                        Toast.LENGTH_LONG).show()
+                Log.d(TAG, "onPNLayoutTrackImpression")
             }
         })
 
         largeLayout.setViewListener(object : PNLargeLayout.ViewListener {
             override fun onPNLayoutViewHidden(layout: PNLayout?) {
-                Toast.makeText(context,
-                        "onPNLayoutViewHidden",
-                        Toast.LENGTH_LONG).show()
+                Log.d(TAG, "onPNLayoutViewHidden")
             }
 
             override fun onPNLayoutViewShown(layout: PNLayout?) {
-                Toast.makeText(context,
-                        "onPNLayoutViewShown",
-                        Toast.LENGTH_LONG).show()
+                Log.d(TAG, "onPNLayoutViewShown")
             }
         })
 
