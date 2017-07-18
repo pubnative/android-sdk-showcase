@@ -1,6 +1,7 @@
 package net.pubnative.sdkshowcase.ui.presenters
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import net.pubnative.sdk.layouts.PNLayout
 import net.pubnative.sdk.layouts.PNSmallLayout
@@ -11,10 +12,12 @@ import java.lang.Exception
 /**
  * Created by erosgarciaponte on 11.07.17.
  */
-class StandardBannerPresenter(val context: Context,
-                              val view: BannerFragmentContract.View,
-                              val placementId: String) : BannerFragmentContract.Presenter,
+class AssetGroupBannerPresenter(val context: Context,
+                                val view: BannerFragmentContract.View,
+                                val placementId: String) : BannerFragmentContract.Presenter,
         PNLayout.TrackListener, PNLayout.LoadListener {
+
+    private val TAG = AssetGroupBannerPresenter::class.java.simpleName
 
     val banner: PNSmallLayout
 
@@ -37,20 +40,17 @@ class StandardBannerPresenter(val context: Context,
     }
 
     override fun onPNLayoutTrackClick(layout: PNLayout?) {
-        Toast.makeText(context,
-                "onPNLayoutTrackClick",
-                Toast.LENGTH_LONG).show()
+        Log.d(TAG, "onPNLayoutTrackClick")
     }
 
     override fun onPNLayoutTrackImpression(layout: PNLayout?) {
-        Toast.makeText(context,
-                "onPNLayoutTrackImpression",
-                Toast.LENGTH_LONG).show()
+        Log.d(TAG, "onPNLayoutTrackImpression")
     }
 
     override fun onPNLayoutLoadFail(layout: PNLayout?, error: Exception?) {
+        Log.d(TAG, error?.message ?: "An error occurred while trying to load the ad")
         Toast.makeText(context,
-                error!!.message ?: "An error occurred while trying to load the ad",
+                error?.message ?: "An error occurred while trying to load the ad",
                 Toast.LENGTH_LONG).show()
     }
 

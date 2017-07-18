@@ -1,16 +1,17 @@
-package net.pubnative.sdkshowcase.adapters.delegateadapters.medium
+package net.pubnative.sdkshowcase.adapters.delegateadapters
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import kotlinx.android.synthetic.main.item_medium_standard.view.*
 import net.pubnative.sdk.layouts.PNLayout
 import net.pubnative.sdk.layouts.PNMediumLayout
 import net.pubnative.sdkshowcase.APP_TOKEN
 import net.pubnative.sdkshowcase.R
-import net.pubnative.sdkshowcase.adapters.delegateadapters.ViewTypeDelegateAdapter
-import net.pubnative.sdkshowcase.data.models.MediumStandardAd
+import net.pubnative.sdkshowcase.data.models.MediumAssetGroupAd
 import net.pubnative.sdkshowcase.ui.views.DestroyableView
 import net.pubnative.sdkshowcase.ui.views.ViewType
 import net.pubnative.sdkshowcase.util.inflate
@@ -23,12 +24,14 @@ class MediumStandardDelegateAdapter : ViewTypeDelegateAdapter {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder = MediumStandardViewHolder(parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
-        item as MediumStandardAd
+        item as MediumAssetGroupAd
         (holder as MediumStandardViewHolder).bind(item)
     }
 
     inner class MediumStandardViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
             parent.inflate(R.layout.item_medium_standard)), DestroyableView, PNLayout.LoadListener, PNLayout.TrackListener {
+
+        private val TAG = MediumStandardViewHolder::class.java.simpleName
 
         val mediumLayout: PNMediumLayout
 
@@ -38,7 +41,7 @@ class MediumStandardDelegateAdapter : ViewTypeDelegateAdapter {
             mediumLayout.setTrackListener(this)
         }
 
-        fun bind(item: MediumStandardAd) = with(itemView) {
+        fun bind(item: MediumAssetGroupAd) = with(itemView) {
             mediumLayout.load(context, APP_TOKEN, item.placementId)
         }
 
@@ -47,21 +50,22 @@ class MediumStandardDelegateAdapter : ViewTypeDelegateAdapter {
         }
 
         override fun onPNLayoutLoadFail(layout: PNLayout?, error: Exception?) {
-            Toast.makeText(itemView.context, error!!.message?: "An error occurred whilst loading the ad", Toast.LENGTH_LONG).show()
+            Log.d(TAG, error?.message?: "An error occurred whilst loading the ad")
+            Toast.makeText(itemView.context, error?.message?: "An error occurred whilst loading the ad", Toast.LENGTH_LONG).show()
         }
 
         override fun onPNLayoutLoadFinish(layout: PNLayout?) {
             mediumLayout.startTrackingView()
-            (itemView as FrameLayout).addView(mediumLayout.getView(itemView.context))
-            itemView.visibility = View.VISIBLE
+            (itemView.ad_container as FrameLayout).addView(mediumLayout.getView(itemView.context))
+            itemView.load_ad_progress.visibility = View.GONE
         }
 
         override fun onPNLayoutTrackClick(layout: PNLayout?) {
-            Toast.makeText(itemView.context, "onPNLayoutTrackClick", Toast.LENGTH_LONG).show()
+            Log.d(TAG, "onPNLayoutTrackClick")
         }
 
         override fun onPNLayoutTrackImpression(layout: PNLayout?) {
-            Toast.makeText(itemView.context, "onPNLayoutTrackImpression", Toast.LENGTH_LONG).show()
+            Log.d(TAG, "onPNLayoutTrackImpression")
         }
     }
 }
