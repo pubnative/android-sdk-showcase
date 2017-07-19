@@ -51,7 +51,7 @@ class InterstitialFragment : Fragment() {
             }
 
             override fun onPNLayoutLoadFinish(layout: PNLayout?) {
-                if (largeLayout.isReady) {
+                if (isResumed && largeLayout.isReady) {
                     showInterstitial()
                 }
             }
