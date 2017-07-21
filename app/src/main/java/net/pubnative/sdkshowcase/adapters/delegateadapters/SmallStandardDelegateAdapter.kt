@@ -51,6 +51,7 @@ class SmallStandardDelegateAdapter : ViewTypeDelegateAdapter {
         override fun onPNLayoutLoadFail(layout: PNLayout?, error: Exception?) {
             Log.d(TAG, error?.message?: "An error occurred whilst loading the ad")
             Toast.makeText(itemView.context, error?.message?: "An error occurred whilst loading the ad", Toast.LENGTH_LONG).show()
+            itemView.load_ad_progress.visibility = View.GONE
         }
 
         override fun onPNLayoutLoadFinish(layout: PNLayout?) {
